@@ -1,0 +1,36 @@
+/* Global */
+* { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; }
+body { color:#fff; background: linear-gradient(-45deg,#6a11cb,#2575fc,#ff6f61,#ffcc70); 
+       background-size:400% 400%; animation:bgmove 12s ease infinite; }
+
+/* Header */
+header { display:flex; justify-content:space-between; align-items:center; padding:20px; background:rgba(0,0,0,0.4); }
+header h1 { font-size:24px; }
+nav a { margin:0 10px; color:#fff; text-decoration:none; font-weight:bold; }
+nav a:hover { text-decoration:underline; }
+
+/* Sections */
+section { padding:60px 20px; text-align:center; }
+section h2 { font-size:28px; margin-bottom:20px; }
+
+/* Hero */
+.hero { padding:100px 20px; background:rgba(0,0,0,0.3); }
+.hero h2 { font-size:32px; margin-bottom:15px; }
+
+/* Skills */
+.skill { margin:15px auto; width:80%; max-width:500px; text-align:left; }
+.bar { background:#333; border-radius:20px; overflow:hidden; height:20px; }
+.fill { background:#ffcc70; height:100%; width:0; transition:width 2s ease; border-radius:20px; }
+
+/* Projects */
+.project { background:rgba(0,0,0,0.4); margin:15px auto; padding:20px; width:80%; max-width:500px; border-radius:10px; }
+
+/* Footer */
+footer { background:rgba(0,0,0,0.5); padding:15px; text-align:center; }
+
+/* Background animation */
+@keyframes bgmove {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
