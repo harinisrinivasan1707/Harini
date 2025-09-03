@@ -1,0 +1,8 @@
+// Animate skill bars when page loads
+window.addEventListener("load", () => {
+  const fills = document.querySelectorAll(".fill");
+  fills.forEach(fill => {
+    const level = fill.getAttribute("data-level");
+    fill.style.width = level + "%";
+  });
+});
