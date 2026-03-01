@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Registration Page</title>
+
+    <style>
+
+        /* ===== Global Styling ===== */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 900px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 25px;
+        }
+
+        /* ===== Event Info ===== */
+        .event-info {
+            background: #f9fbff;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+        }
+
+        .event-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .event-info li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            transition: 0.3s;
+        }
+
+        .event-info li:hover {
+            background: #e3f2fd;
+            transform: translateX(5px);
+        }
+
+        /* ===== Form Styling ===== */
+        form {
+            margin-top: 15px;
+        }
+
+        fieldset {
+            border: 2px solid #dcdcdc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #fcfcfc;
+        }
+
+        legend {
+            font-weight: bold;
+            padding: 6px 12px;
+            background: #3498db;
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 18px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52,152,219,0.5);
+            outline: none;
+        }
+
+        .inline {
+            margin-bottom: 15px;
+        }
+
+        /* ===== Buttons ===== */
+        .buttons {
+            text-align: center;
+        }
+
+        .buttons input {
+            padding: 12px 25px;
+            border-radius: 25px;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+            margin: 5px;
+            transition: 0.4s ease;
+        }
+
+        .buttons input[type="submit"] {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .buttons input[type="reset"] {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .buttons input:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* ===== Declaration ===== */
+        .declaration {
+            margin: 15px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* ===== Table Styling ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        tr:hover {
+            background: #d6eaf8;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            margin-top: 30px;
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 0 0 15px 15px;
+            font-size: 14px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Web Development Workshop 2026</h1>
+
+    <p class="description">
+        This workshop helps students learn the basics of web development 
+        and improve their practical skills in building websites.
+    </p>
+
+    <div class="event-info">
+        <h2>Event Information</h2>
+        <ul>
+            <li><strong>Date:</strong> 10th March 2026</li>
+            <li><strong>Time:</strong> 10:00 AM – 4:00 PM</li>
+            <li><strong>Venue:</strong> College Auditorium </li>
+            <li><strong>Organizer:</strong> Department of Computer Applications</li>
+        </ul>
+    </div>
+
+    <h2>Registration Form</h2>
+
+    <form>
+
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <label>Name:</label>
+            <input type="text">
+
+            <label>Email:</label>
+            <input type="email">
+
+            <label>Phone Number:</label>
+            <input type="tel">
+
+            <label>Gender:</label>
+            <div class="inline">
+                <input type="radio" name="gender"> Male
+                <input type="radio" name="gender"> Female
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Event Details</legend>
+
+            <label>Select Event:</label>
+            <select>
+                <option>Web Development</option>
+                <option>UI/UX Design</option>
+                <option>Python Basics</option>
+            </select>
+
+            <label>Mode of Participation:</label>
+            <div class="inline">
+                <input type="radio" name="mode"> Online
+                <input type="radio" name="mode"> Offline
+            </div>
+
+            <label>Upload ID Proof:</label>
+            <input type="file">
+
+            <label>Comments:</label>
+            <textarea rows="4"></textarea>
+        </fieldset>
+
+        <div class="declaration">
+            <input type="checkbox">
+            I confirm that the above details are correct.
+        </div>
+
+        <div class="buttons">
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </div>
+
+    </form>
+
+    <h2>Registered Participants</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Event</th>
+            <th>Mode</th>
+        </tr>
+        <tr>
+            <td>Pushpa S</td>
+            <td>pushpaseenu03@gamil.com</td>
+            <td>9876543210</td>
+            <td>Web Development</td>
+            <td>Online </td>
+
+<td>Sabarivasan V</td>
+          <td>Sparky07@gamil.com</td>
+            <td>9361791760</td>
+            <td>Web Development</td>
+            <td>Online </td>
+
+        </tr>
+    </table>
+
+    <footer>
+        <p>Email: harinisharinis56@gmail.com</p>
+        <p>Help Desk: +91 9025613272</p>
+        <p>&copy; 2026 Web Development Workshop. All Rights Reserved.</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
