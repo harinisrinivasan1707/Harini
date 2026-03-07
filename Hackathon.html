@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Activity Tracker</title>
+
+<style>
+
+/* Page Style */
+
+body{
+font-family: Arial, sans-serif;
+margin:0;
+background:#f4f6f9;
+text-align:center;
+}
+
+/* Header */
+
+header{
+background:#2c3e50;
+color:white;
+padding:20px;
+}
+
+/* Navigation */
+
+nav{
+background:#34495e;
+padding:10px;
+}
+
+nav button{
+padding:10px 20px;
+margin:5px;
+border:none;
+background:#3498db;
+color:white;
+cursor:pointer;
+border-radius:5px;
+}
+
+nav button:hover{
+background:#2980b9;
+}
+
+/* Sections */
+
+section{
+padding:20px;
+}
+
+/* Activity Card */
+
+.activity{
+background:white;
+margin:15px auto;
+padding:15px;
+width:70%;
+border-radius:10px;
+box-shadow:0 3px 6px rgba(0,0,0,0.15);
+}
+
+/* Buttons */
+
+.completeBtn{
+background:#27ae60;
+color:white;
+padding:7px 12px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+.completeBtn:hover{
+background:#1e8449;
+}
+
+/* Status */
+
+.pending{
+color:#e74c3c;
+font-weight:bold;
+}
+
+.completed{
+color:#27ae60;
+font-weight:bold;
+}
+
+/* Progress Bar */
+
+.progressBox{
+width:70%;
+background:#ddd;
+margin:20px auto;
+height:25px;
+border-radius:10px;
+overflow:hidden;
+}
+
+.progressBar{
+height:100%;
+background:#3498db;
+width:0%;
+color:white;
+text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>Student Activity Tracker</h1>
+<p>Track your daily learning activities easily</p>
+</header>
+
+<nav>
+<button onclick="showHome()">Home</button>
+<button onclick="showActivities()">Activities</button>
+</nav>
+
+<!-- Home Section -->
+
+<section id="home">
+<h2>Welcome</h2>
+<p>This simple web application helps students track their daily learning activities and monitor their progress.</p>
+</section>
+
+<!-- Activity Section -->
+
+<section id="activities" style="display:none;">
+
+<h2>Activity List</h2>
+
+<div id="activityContainer"></div>
+
+<h3 id="progressText"></h3>
+
+<div class="progressBox">
+<div class="progressBar" id="progressBar"></div>
+</div>
+
+</section>
+
+<script>
+
+/* Activity Data */
+
+let activities = JSON.parse(localStorage.getItem("activities")) || [
+
+{ name:"HTML Basics", desc:"Learn HTML structure", status:"Pending" },
+{ name:"CSS Styling", desc:"Practice webpage styling", status:"Pending" },
+{ name:"JavaScript Basics", desc:"Learn variables and functions", status:"Pending" },
+{ name:"DOM Manipulation", desc:"Use JS to modify HTML", status:"Pending" },
+{ name:"Mini Project", desc:"Build simple web project", status:"Pending" },
+{ name:"Practice Coding", desc:"Solve coding problems", status:"Pending" }
+
+];
+
+/* Navigation */
+
+function showHome(){
+document.getElementById("home").style.display="block";
+document.getElementById("activities").style.display="none";
+}
+
+function showActivities(){
+document.getElementById("home").style.display="none";
+document.getElementById("activities").style.display="block";
+displayActivities();
+}
+
+/* Display Activities */
+
+function displayActivities(){
+
+let container = document.getElementById("activityContainer");
+container.innerHTML="";
+
+activities.forEach((activity,index)=>{
+
+let div=document.createElement("div");
+div.className="activity";
+
+div.innerHTML=`
+
+<h3>${activity.name}</h3>
+<p>${activity.desc}</p>
+
+<p class="${activity.status==='Completed'?'completed':'pending'}">
+Status: ${activity.status}
+</p>
+
+${activity.status==="Pending"
+? `<button class="completeBtn" onclick="markCompleted(${index})">Mark Completed</button>`
+: ""}
+
+`;
+
+container.appendChild(div);
+
+});
+
+updateProgress();
+
+}
+
+/* Mark Activity Completed */
+
+function markCompleted(index){
+
+activities[index].status="Completed";
+
+localStorage.setItem("activities",JSON.stringify(activities));
+
+displayActivities();
+
+}
+
+/* Update Progress */
+
+function updateProgress(){
+
+let completed = activities.filter(a => a.status==="Completed").length;
+let total = activities.length;
+
+document.getElementById("progressText").innerText =
+completed + " out of " + total + " activities completed";
+
+let percent = (completed/total)*100;
+
+document.getElementById("progressBar").style.width = percent+"%";
+
+document.getElementById("progressBar").innerText = Math.round(percent)+"%";
+
+}
+
+</script>
+
+</body>
+  </html>
